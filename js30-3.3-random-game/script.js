@@ -1,8 +1,5 @@
-class SmartSwipeController {
+class Swipe {
 	_start = { x: 0, y: 0 };
-	/**
-	 * Events Array. Can be changed
-	 */
 	eventNames = [
 		"swipeleft", // 0
 		"swiperight", // 1
@@ -12,19 +9,11 @@ class SmartSwipeController {
 		"zoomin", // 5
 		"zoomout", // 6
 	];
-	/**
-	 * Apply additional tap events in HTML element
-	 * @param {HTMLElement} element - any HTML element
-	 * @param {number} offset - the zone of non-triggering side events in pixels (except for the tap event)
-	 */
 	constructor(element, offset = 5) {
 		this.element = element;
 		this.offset = offset;
 		this.addEvents();
 	}
-	/**
-	 * Manualy init events
-	 */
 	addEvents() {
 		this._startEvent = (e) => {
 			if (e.changedTouches) {
@@ -61,9 +50,6 @@ class SmartSwipeController {
 
 		this._events();
 	}
-	/**
-	 * remove additional events
-	 */
 	removeEvents() {
 		this._events("remove");
 	}
@@ -364,4 +350,4 @@ container.addEventListener("swipedown", () => {
 startNewGame();
 updateScore();
 updateScoreListUI();
-new SmartSwipeController(container);
+new Swipe(container);
